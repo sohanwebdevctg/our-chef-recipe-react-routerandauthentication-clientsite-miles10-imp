@@ -11,6 +11,8 @@ const Home = () => {
       {/* banner section start */}
       <Banner></Banner>
       {/* banner section end */}
+      {/* main section start */}
+      {/* main section end */}
       {/* ingredient section start */}
       <Ingredient></Ingredient>
       {/* ingredient section end */}

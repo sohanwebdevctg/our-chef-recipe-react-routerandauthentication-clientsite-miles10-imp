@@ -3,6 +3,9 @@ import Home from "../pages/Home/Home";
 import MainLayout from "../MainLayout/MainLayout";
 import Blog from "../pages/Blog/Blog";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import LogIn from "../pages/LogIn/LogIn";
+import Register from "../pages/Register/Register";
+import Terms from "../pages/Terms/Terms";
 
 const router = createBrowserRouter([
   {
@@ -12,19 +15,24 @@ const router = createBrowserRouter([
     children : [
       {
         path : '/',
-        element : <Home></Home>
+        element : <Home></Home>,
+        loader : () => fetch('')
       },
       {
         path : '/blog',
         element : <Blog></Blog>
       },
       {
+        path : '/terms',
+        element : <Terms></Terms>
+      },
+      {
         path : '/login',
-        element : <h1>this is login page</h1>
+        element : <LogIn></LogIn>
       },
       {
         path : '/register',
-        element : <h1>this is register</h1>
+        element : <Register></Register>
       }
     ]
   }
