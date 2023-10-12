@@ -11,20 +11,24 @@ const githubProvider = new GithubAuthProvider();
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
 
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(null);
+  const [loader, setLoader] = useState(true)
 
   //register
   const register = (name, password) => {
+    setLoader(true)
     return createUserWithEmailAndPassword(auth, name, password)
   }
 
   //login
   const login = (email, password) => {
+    setLoader(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
 
   //userDetails
   const userDetails = (auth,name, photo) => {
+    setLoader(true)
     return updateProfile(auth, {
       displayName : name, photoURL : photo
     })
@@ -32,11 +36,13 @@ const AuthProvider = ({children}) => {
 
   //google
   const google = () => {
+    setLoader(true)
     return signInWithPopup(auth, googleProvider)
   }
 
   //github
   const github = () => {
+    setLoader(true)
     return signInWithPopup(auth, githubProvider)
   }
 
@@ -50,6 +56,7 @@ const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
       setUserData(currentUser)
+      setLoader(false)
     })
     return () => {
       return unsubscribed()
@@ -57,7 +64,7 @@ const AuthProvider = ({children}) => {
   }, [])
 
   //userinfo
-  const userInfo = {register, login, userData, logOut, userDetails, google, github}
+  const userInfo = {register, login, userData, logOut, userDetails, google, github, loader}
 
   return (
     <UseContext.Provider value={userInfo}>
