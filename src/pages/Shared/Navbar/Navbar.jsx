@@ -2,11 +2,17 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
+import { UseContext } from '../../../AuthProvider/AuthProvider';
 
 const Navbar = () => {
 
-
+  const {userData, logOut} = useContext(UseContext)
   const [show, setShow] = useState(false)
+  console.log(userData)
+
+  const signOut = () => {
+    logOut()
+  }
   
 
   return (
@@ -27,9 +33,16 @@ const Navbar = () => {
             </div>
             {/* link section end */}
             <div>
-              <Link to="/login">
+              {
+                userData ?
+                <div>
+                 <button onClick={signOut} className='bg-black text-white px-4 py-2 rounded'>logOut</button>
+                </div>
+                :
+                <Link to="/login">
                 <button className='bg-black text-white px-4 py-2 rounded'>logIn</button>
-              </Link>
+                </Link>
+              }
             </div>
           </div>
         </div>

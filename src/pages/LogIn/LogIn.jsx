@@ -1,13 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './LogIn.css'
 import { Link,  } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+  import 'react-toastify/dist/ReactToastify.css';
+import { UseContext } from '../../AuthProvider/AuthProvider';
 
 const LogIn = () => {
 
+  const {login} = useContext(UseContext)
   const [error, setError] = useState('');
 
   //loginBtn
@@ -18,12 +20,21 @@ const LogIn = () => {
     const password = form.password.value;
 
     if(email === null){
-      return setError('please provide your email')
+      return setError('please provide your email');
     }
-    if(password === null){
+    if(password === null && password < 6){
       return setError('please set your password')
     }
 
+    login(email, password)
+    .then((result) => {
+      const user = result.user;
+      toast('success your login')
+    })
+    .then((error) => {
+      console.log(error)
+      return;
+    })
 
 
     form.reset()

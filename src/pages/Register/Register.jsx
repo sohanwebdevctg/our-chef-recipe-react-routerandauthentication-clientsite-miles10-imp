@@ -4,8 +4,11 @@ import './Register.css';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { UseContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
+
+  const {register, userDetails} = useContext(UseContext)
 
   const [show, setShow] = useState(false);
   const [error, setError] = useState('');
@@ -30,12 +33,24 @@ const Register = () => {
     if(email === null){
       return setError('please provide your email')
     }
-    if(password === null){
+    if(password === null && password < 6){
       return setError('please set your password')
     }
     if(photo === null){
       return setError('please set your photo url')
     }
+
+    register(email, password)
+    .then((result) => {
+      const user = result.user;
+      userDetails(result.user, name, photo)
+      toast('success your registration')
+    })
+    .catch((error) => {
+      setError('please try again')
+      toast('please try again')
+      return;
+    })
 
 
     form.reset()
