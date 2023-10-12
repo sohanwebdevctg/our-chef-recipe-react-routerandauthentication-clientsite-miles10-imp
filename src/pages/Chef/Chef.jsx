@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Chef = ({chef}) => {
 
 
+  // eslint-disable-next-line react/prop-types
   const {id, image, name, experience,number_of_recipes, likes} = chef;
 
   return (
