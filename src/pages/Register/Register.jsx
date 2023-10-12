@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const Register = () => {
 
   const [show, setShow] = useState(false);
-
+  const [error, setError] = useState('');
 
   const checkBox = (event) => {
     setShow(event.target.checked);
@@ -23,6 +23,19 @@ const Register = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
+
+    if(name === null){
+      return setError('please provide your name')
+    }
+    if(email === null){
+      return setError('please provide your email')
+    }
+    if(password === null){
+      return setError('please set your password')
+    }
+    if(photo === null){
+      return setError('please set your photo url')
+    }
 
 
     form.reset()
@@ -50,6 +63,9 @@ const Register = () => {
             <input type="password" name="password" id="password" placeholder='please enter password' className='my-2 rounded p-2 md:w-80 w-72' required/><br></br>
             <p className='text-xl text-red-700'></p>
             {/* password end */}
+            {/* message section start */}
+            <p className='text-lg text-red-600 my-2'>{error}</p>
+            {/* message section end */}
             {/* terms and condition start */}
             <p className='flex gap-2 my-2 items-center'>
               <input type="checkbox" className='md:my-2 m-0' onClick={checkBox} />

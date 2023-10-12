@@ -8,8 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const LogIn = () => {
 
-
-
+  const [error, setError] = useState('');
 
   //loginBtn
   const loginBtn = (event) => {
@@ -17,6 +16,13 @@ const LogIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    if(email === null){
+      return setError('please provide your email')
+    }
+    if(password === null){
+      return setError('please set your password')
+    }
 
 
 
@@ -39,6 +45,9 @@ const LogIn = () => {
             <input type="password" name="password" id="password" placeholder='please enter password' className='my-2 rounded p-2 md:w-80 w-72' required/><br></br>
             <p className='text-base text-red-700 mb-2'></p>
             {/* password end */}
+            {/* message section start */}
+            <p className='text-lg text-red-600 my-2'>{error}</p>
+            {/* message section end */}
             {/* submit button */}
             <button type='submit' className='bg-red-600 w-full p-2 rounded text-white md:text-lg md:font-bold'>Register</button>
             {/* submit button */}
