@@ -1,21 +1,29 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Outlet } from "react-router-dom";
-import Footer from '../pages/Shared/Footer/Footer';
 import Navbar from '../pages/Shared/Navbar/Navbar';
+import Footer from '../pages/Shared/Footer/Footer';
+import { Outlet, useNavigation } from 'react-router-dom';
+import Loading from '../pages/Loading/Loading';
 
 const MainLayout = () => {
+
+  //loading
+  const navigation = useNavigation();
+
   return (
     <div>
-      {/* this is navbar section start */}
+      {/* navbar section start */}
       <Navbar></Navbar>
-      {/* this is navbar section end */}
-      {/* this is home section start */}
+      {/* navbar section end */}
+      {/* loading section start */}
+      {navigation.state === 'loading' ? <Loading></Loading> : ''}
+      {/* loading section end */}
+      {/* main section start */}
       <Outlet></Outlet>
-      {/* this is home section end */}
-      {/* this is footer section start */}
+      {/* main section end */}
+      {/* navbar section start */}
       <Footer></Footer>
-      {/* this is footer section end */}
+      {/* footer section end */}
     </div>
   );
 };
