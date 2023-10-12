@@ -11,7 +11,7 @@ const Private = ({children}) => {
 
   //loading
   if(loader){
-    return <div className='border-2 p-3 border-dotted rounded-full animate-spin'></div>
+    return <p>loading.....</p>
   }
 
   // user data

@@ -18,12 +18,12 @@ const router = createBrowserRouter([
       {
         path : '/',
         element : <Home></Home>,
-        loader : () => fetch('http://localhost:5000/chef')
+        loader : () => fetch('https://chef-server-58tybfoup-sohanwebdevctgs-projects.vercel.app/chef')
       },
       {
         path : '/chef/:id',
         element : <Private><ChefDetails></ChefDetails></Private>,
-        loader : ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
+        loader : ({params}) => fetch(`https://chef-server-58tybfoup-sohanwebdevctgs-projects.vercel.app/chef/${params.id}`)
       },
       {
         path : '/blog',

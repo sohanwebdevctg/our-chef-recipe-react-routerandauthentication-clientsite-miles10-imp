@@ -52,7 +52,7 @@ const LogIn = () => {
   //googleBtn
   const googleBtn = () => {
     google()
-    navigate(from)
+    navigate('/')
     toast('your are logged in successfully')
     return;
   }

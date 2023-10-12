@@ -21,7 +21,9 @@ const MainLayout = () => {
       {navigation.state === 'loading' ? <Loading></Loading> : ''}
       {/* loading section end */}
       {/* main section start */}
-      <Outlet></Outlet>
+      <div className='min-h-[620px]'>
+        <Outlet></Outlet>
+      </div>
       {/* main section end */}
       {/* navbar section start */}
       <Footer></Footer>

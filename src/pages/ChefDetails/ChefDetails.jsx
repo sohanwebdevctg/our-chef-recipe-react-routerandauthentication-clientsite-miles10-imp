@@ -12,7 +12,7 @@ const ChefDetails = () => {
   //recipe section data
   const [recipes, setRecipes] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/recipe')
+    fetch('https://chef-server-58tybfoup-sohanwebdevctgs-projects.vercel.app/recipe')
     .then((res) => res.json())
     .then(data => setRecipes(data))
   }, [])
