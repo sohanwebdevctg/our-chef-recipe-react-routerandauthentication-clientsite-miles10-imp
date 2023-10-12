@@ -4,6 +4,8 @@ import Navbar from '../pages/Shared/Navbar/Navbar';
 import Footer from '../pages/Shared/Footer/Footer';
 import { Outlet, useNavigation } from 'react-router-dom';
 import Loading from '../pages/Loading/Loading';
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const MainLayout = () => {
 
@@ -24,6 +26,9 @@ const MainLayout = () => {
       {/* navbar section start */}
       <Footer></Footer>
       {/* footer section end */}
+      {/* react toastify section start */}
+      <ToastContainer />
+      {/* react toastify section end */}
     </div>
   );
 };
