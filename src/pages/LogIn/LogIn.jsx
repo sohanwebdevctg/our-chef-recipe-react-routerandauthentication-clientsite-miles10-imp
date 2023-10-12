@@ -9,7 +9,7 @@ import { UseContext } from '../../AuthProvider/AuthProvider';
 
 const LogIn = () => {
 
-  const {login} = useContext(UseContext)
+  const {login, google, github} = useContext(UseContext)
   const [error, setError] = useState('');
 
   //loginBtn
@@ -36,10 +36,20 @@ const LogIn = () => {
       return;
     })
 
-
     form.reset()
   }
 
+  //googleBtn
+  const googleBtn = () => {
+    google()
+    toast('your are logged in successfully')
+  }
+
+  //githubBtn
+  const githubBtn = () => {
+    github()
+    toast('your are logged in successfully')
+  }
 
 
   return (
@@ -65,8 +75,8 @@ const LogIn = () => {
           </form>
           {/* socialMedia section start */}
           <div className='grid md:grid-cols-2 grid-cols-1 md:gap-5 mt-2'>
-            <button className='border-2 border-blue-500 text-blue-500 text-sm md:w-[150px] w-full rounded py-1 flex items-center gap-1 justify-center hover:bg-blue-500 hover:text-black duration-300'><FaGoogle className='w-3 h-3'></FaGoogle>LogIn Via Google</button>
-            <button className='border-2 border-slate-300 text-slate-300 text-sm md:w-[150px] w-full rounded py-1 flex items-center gap-1 justify-center hover:bg-slate-300 hover:text-black duration-300 mt-2 md:mt-0'><FaGithub className='w-3 h-3'></FaGithub>LogIn Via GitHub</button>
+            <button onClick={googleBtn} className='border-2 border-blue-500 text-blue-500 text-sm md:w-[150px] w-full rounded py-1 flex items-center gap-1 justify-center hover:bg-blue-500 hover:text-black duration-300'><FaGoogle className='w-3 h-3'></FaGoogle>LogIn Via Google</button>
+            <button onClick={githubBtn} className='border-2 border-slate-300 text-slate-300 text-sm md:w-[150px] w-full rounded py-1 flex items-center gap-1 justify-center hover:bg-slate-300 hover:text-black duration-300 mt-2 md:mt-0'><FaGithub className='w-3 h-3'></FaGithub>LogIn Via GitHub</button>
           </div>
           {/* socialMedia section end */}
           {/* login page section star */}

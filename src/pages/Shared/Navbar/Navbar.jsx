@@ -3,14 +3,17 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { UseContext } from '../../../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
 
   const {userData, logOut} = useContext(UseContext)
   const [show, setShow] = useState(false)
-  console.log(userData)
+
 
   const signOut = () => {
+    toast('your are logout')
     logOut()
   }
   
@@ -35,7 +38,10 @@ const Navbar = () => {
             <div>
               {
                 userData ?
-                <div>
+                <div className='flex gap-5 items-center'>
+                  <div>
+                  <img className='w-10 h-10 rounded-2xl' src={userData.photoURL}></img>
+                  </div>
                  <button onClick={signOut} className='bg-black text-white px-4 py-2 rounded'>logOut</button>
                 </div>
                 :
@@ -74,9 +80,23 @@ const Navbar = () => {
               </p>
             </div>
             <div>
-              <Link to="/login">
-                <button className='bg-black text-white px-4 py-2 rounded'>logIn</button>
-              </Link>
+            {
+                userData ?
+                <div className='flex my-2 justify-center'>
+                  <div>
+                    <div className='my-2 ml-5'>
+                    <img className='w-10 h-10 rounded-2xl text-center' src={userData.photoURL}></img>
+                    </div>
+                 <button onClick={signOut} className='bg-black text-white px-4 py-2 rounded'>logOut</button>
+                  </div>
+                </div>
+                :
+                <div className='flex my-2'>
+                  <Link className='mx-auto' to="/login">
+                    <button className='bg-black text-white px-4 py-2 rounded'>logIn</button>
+                  </Link>
+                </div>
+              }
             </div>
             {/* link section end */}
         </div>
