@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const {userData, logOut} = useContext(UseContext)
   const [show, setShow] = useState(false)
+  console.log(userData)
 
 
   const signOut = () => {
@@ -39,7 +40,7 @@ const Navbar = () => {
               {
                 userData ?
                 <div className='flex gap-5 items-center'>
-                  <div>
+                  <div title={userData.displayName}>
                   <img className='w-10 h-10 rounded-2xl' src={userData.photoURL}></img>
                   </div>
                  <button onClick={signOut} className='bg-black text-white px-4 py-2 rounded'>logOut</button>

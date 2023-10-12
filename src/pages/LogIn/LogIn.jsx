@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react';
 import './LogIn.css'
-import { Link,  } from 'react-router-dom';
+import { Link, useLocation, useNavigate,  } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -10,7 +10,14 @@ import { UseContext } from '../../AuthProvider/AuthProvider';
 const LogIn = () => {
 
   const {login, google, github} = useContext(UseContext)
-  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(null)
+  const [error, setError] = useState(null);
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  // router path
+  let from = location.state?.from?.pathname || "/";
+
 
   //loginBtn
   const loginBtn = (event) => {
@@ -29,10 +36,13 @@ const LogIn = () => {
     login(email, password)
     .then((result) => {
       const user = result.user;
+      setSuccess('success your login')
       toast('success your login')
+      navigate(from)
     })
-    .then((error) => {
-      console.log(error)
+    .catch(() => {
+      setError('your data is invalid')
+      toast('your data is invalid')
       return;
     })
 
@@ -42,13 +52,17 @@ const LogIn = () => {
   //googleBtn
   const googleBtn = () => {
     google()
+    navigate(from)
     toast('your are logged in successfully')
+    return;
   }
 
   //githubBtn
   const githubBtn = () => {
     github()
+    navigate('/')
     toast('your are logged in successfully')
+    return;
   }
 
 
@@ -67,7 +81,7 @@ const LogIn = () => {
             <p className='text-base text-red-700 mb-2'></p>
             {/* password end */}
             {/* message section start */}
-            <p className='text-lg text-red-600 my-2'>{error}</p>
+            <p className='text-lg text-red-600 my-2'>{success || error}</p>
             {/* message section end */}
             {/* submit button */}
             <button type='submit' className='bg-red-600 w-full p-2 rounded text-white md:text-lg md:font-bold'>Register</button>

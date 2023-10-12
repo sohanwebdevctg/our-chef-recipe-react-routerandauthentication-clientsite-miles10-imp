@@ -2,6 +2,7 @@
 import React from 'react';
 import './Chef.css';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 // eslint-disable-next-line react/prop-types
 const Chef = ({chef}) => {
@@ -14,7 +15,9 @@ const Chef = ({chef}) => {
     <div>
       {/* chef card section start */}
       <div className='px-2 md:px-0 bg-slate-100 pb-1 md:pb-0'>
-        <img className='w-full md:h-56 h-full' src={image}></img>
+        <LazyLoad>
+          <img className='w-full md:h-56 h-full' src={image}></img>
+        </LazyLoad>
         <div className='my-2 pl-2 md:py-3'>
           <p className='md:text-xl'><strong>Name:</strong> <i>{name}</i></p>
           <p className='md:text-xl'><strong>Experience:</strong> <i>{experience}</i></p>

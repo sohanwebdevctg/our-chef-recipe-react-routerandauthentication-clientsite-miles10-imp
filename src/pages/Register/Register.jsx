@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react';
 import './Register.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { UseContext } from '../../AuthProvider/AuthProvider';
@@ -9,9 +9,9 @@ import { UseContext } from '../../AuthProvider/AuthProvider';
 const Register = () => {
 
   const {register, userDetails} = useContext(UseContext)
-
+  const navigate = useNavigate()
   const [show, setShow] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const checkBox = (event) => {
     setShow(event.target.checked);
@@ -45,8 +45,9 @@ const Register = () => {
       const user = result.user;
       userDetails(result.user, name, photo)
       toast('success your registration')
+      navigate('/')
     })
-    .catch((error) => {
+    .catch(() => {
       setError('please try again')
       toast('please try again')
       return;
