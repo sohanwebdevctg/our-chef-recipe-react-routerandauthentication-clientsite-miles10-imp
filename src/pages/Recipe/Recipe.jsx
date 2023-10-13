@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import './Recipe.css'
 import { HiHeart } from "react-icons/hi";
+import { toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line react/prop-types
 const Recipe = ({recipe}) => {
@@ -9,6 +11,11 @@ const Recipe = ({recipe}) => {
   // eslint-disable-next-line react/prop-types
   const { image,ingredients,methodOfCooking,recipeName} = recipe;
   const [select, setSelect] = useState(false)
+
+  const selectBtn = () => {
+    toast('success your selected recipe')
+    setSelect(true)
+  }
 
 
   return (
@@ -24,7 +31,7 @@ const Recipe = ({recipe}) => {
           {/* <p className='md:text-xl'><strong>Recipes:</strong> <i>{number_of_recipes}</i></p>
           <p className='md:text-xl'><strong>Likes:</strong> <i>{likes}</i></p> */}
         </div>
-        <div onClick={() => {setSelect(true)}} className=' flex justify-end pr-5 mt-auto mb-4'>
+        <div onClick={selectBtn} className=' flex justify-end pr-5 mt-auto mb-4'>
           {
             select ?
             ""
