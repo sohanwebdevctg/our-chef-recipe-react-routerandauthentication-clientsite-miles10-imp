@@ -34,6 +34,7 @@ const Navbar = () => {
             <div className='md:flex gap-5'>
               <NavLink to="/" className={({ isActive}) => isActive ? "text-white text-xl font-semibold" : "text-black text-xl" }>Home</NavLink>
               <NavLink to="/blog" className={({ isActive}) => isActive ? "text-white text-xl font-semibold" : "text-black text-xl" }>Blog</NavLink>
+              <NavLink to="/aboutus" className={({ isActive}) => isActive ? "text-white text-xl font-semibold" : "text-black text-xl" }>AboutUs</NavLink>
             </div>
             {/* link section end */}
             <div>
@@ -78,6 +79,9 @@ const Navbar = () => {
               </p>
               <p className='mt-2'>
                 <NavLink to="/blog" className={({ isActive}) => isActive ? "text-white text-xl font-semibold" : "text-black text-xl" }>Blog</NavLink>
+              </p>
+              <p className='mt-2'>
+                <NavLink to="/aboutus" className={({ isActive}) => isActive ? "text-white text-xl font-semibold" : "text-black text-xl" }>AboutUs</NavLink>
               </p>
             </div>
             <div>

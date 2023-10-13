@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Terms from "../pages/Terms/Terms";
 import ChefDetails from "../pages/Chefdetails/Chefdetails";
 import Private from "./Private";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path : '/blog',
         element : <Blog></Blog>
+      },
+      {
+        path : '/aboutus',
+        element : <AboutUs></AboutUs>
       },
       {
         path : '/terms',

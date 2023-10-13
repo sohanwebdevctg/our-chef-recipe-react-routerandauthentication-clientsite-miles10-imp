@@ -6,4 +6,4 @@
 * ### user can login 3 types of format(login page, github, google)
 * ### authentication set from firebase
 
-* ### live link : (https://6528bb04fcf08453fa1483bc--frabjous-fenglisu-d99e13.netlify.app/login)
+* ### live link : ()
