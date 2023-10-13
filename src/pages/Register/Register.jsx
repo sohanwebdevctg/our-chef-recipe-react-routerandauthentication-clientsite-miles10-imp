@@ -50,7 +50,6 @@ const Register = () => {
     .catch(() => {
       setError('please try again')
       toast('please try again')
-      return;
     })
 
 

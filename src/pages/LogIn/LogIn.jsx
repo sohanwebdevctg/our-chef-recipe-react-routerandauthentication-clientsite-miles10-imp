@@ -16,7 +16,7 @@ const LogIn = () => {
   let location = useLocation();
 
   // router path
-  let from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
 
   //loginBtn
@@ -36,14 +36,13 @@ const LogIn = () => {
     login(email, password)
     .then((result) => {
       const user = result.user;
+      navigate(from , { replace: true })
       setSuccess('success your login')
       toast('success your login')
-      navigate(from)
     })
     .catch(() => {
       setError('your data is invalid')
       toast('your data is invalid')
-      return;
     })
 
     form.reset()
@@ -52,17 +51,15 @@ const LogIn = () => {
   //googleBtn
   const googleBtn = () => {
     google()
-    navigate('/')
     toast('your are logged in successfully')
-    return;
+    navigate(from)
   }
 
   //githubBtn
   const githubBtn = () => {
     github()
-    navigate('/')
     toast('your are logged in successfully')
-    return;
+    navigate(from)
   }
 
 

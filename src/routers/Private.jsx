@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { UseContext } from '../AuthProvider/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loading from '../pages/Loading/Loading';
 
 // eslint-disable-next-line react/prop-types
 const Private = ({children}) => {
@@ -11,7 +12,7 @@ const Private = ({children}) => {
 
   //loading
   if(loader){
-    return <p>loading.....</p>
+    return <Loading></Loading>
   }
 
   // user data
